@@ -1,0 +1,69 @@
+.body{
+	background-color: #ffa9a9;
+}
+
+.main{
+	background-color: #ffa9a9;
+	height: 100%;
+	width: 100%;
+    top: 0px;
+    left: 0px;
+	justify-content: center;
+	display: flex;
+	position: absolute;
+
+}
+
+.container{
+	background-color: white;
+	height: 100px;
+	width: 100%;
+	justify-content: center;
+	display: flex;
+	position: absolute;
+    top: 5%;
+}
+
+.title{
+    color: #ffa9a9;
+    font-family: Didot; 
+    font-size: 56.38px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 3px;
+    transform: scale(1.5, 2);
+    position: absolute;
+    top: 50%
+}
+
+.time{
+	
+}
+
+.daytype{
+    color: #d95959;
+    font-family: Didot;
+    font-size: 400px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 3px;
+    transform: scale(1.5, 2);
+    position: absolute;
+    display: flex;
+    top: 100px;
+}
+
+.daytypecontainer{
+    color: black;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+/*    top: 50%;*/
+/*}*/
+
+
+
+

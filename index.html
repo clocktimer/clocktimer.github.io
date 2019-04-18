@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html>
-	<body>
-		<p>wussup</p>
-	</body>
+	<head>
+		<title>Time</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body class="body">
+		<div class="main">
+			<div class="main">
+                <div class="daytypecontainer">
+                    <p id="daytype" class="daytype"></p>
+                </div>
+				<div class="container">
+                    <div class="title">CLASS COUNTDOWN</div>
+				</div>
+<!--                <div class="time">0:00:00:00</div>-->
+            </div>
+		</div>
+
+
+		<script type="text/javascript">	
+            
+            var date = new Date();
+            day = date.getDay();
+            day += 1;
+            if (day == "1" || day == "4"){
+                document.getElementById("daytype").innerHTML = "A";
+            } else if (day == "2" || day == "5"){
+                document.getElementById("daytype").innerHTML = "B";
+            }
+            
+            
+		</script>
+		</body>
 </html>
