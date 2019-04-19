@@ -21,7 +21,8 @@
 	justify-content: center;
 	display: flex;
 	position: absolute;
-    top: 5%;
+/*    top: 5%;*/
+    top: 39px;
 }
 
 .title{
@@ -34,11 +35,19 @@
     line-height: 3px;
     transform: scale(1.5, 2);
     position: absolute;
-    top: 50%
+    top: 50%;
+    display: flex;
+    white-space: nowrap;
+    
 }
 
 .time{
-	
+	position: absolute;
+    color: black;
+    font-size: 200px;
+    top: 350px;
+    font-weight: 700;
+    font-family: Didot;
 }
 
 .daytype{
@@ -62,7 +71,7 @@
     display: flex;
     position: absolute;
 /*    top: 50%;*/
-/*}*/
+}
 
 
 

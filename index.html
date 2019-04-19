@@ -13,7 +13,7 @@
 				<div class="container">
                     <div class="title">CLASS COUNTDOWN</div>
 				</div>
-<!--                <div class="time">0:00:00:00</div>-->
+                <div id="time" class="time">00:00:00</div>
             </div>
 		</div>
 
@@ -22,11 +22,50 @@
             
             var date = new Date();
             day = date.getDay();
-            if (day == "1" || day == "4"){
-                document.getElementById("daytype").innerHTML = "A";
-            } else if (day == "2" || day == "5"){
-                document.getElementById("daytype").innerHTML = "B";
+            checkedday = 0;
+            displaytime = document.getElementById("time");
+            window.onload = timecheck();
+            
+            function timecheck() {
+                var date = new Date();
+                hours = date.getHours();
+                minutes = date.getMinutes();
+                seconds = date.getSeconds();
+                timearray = [hours, minutes, seconds];
+                
+                singledigit = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                
+                if (minutes == singledigit[0] || minutes == singledigit[1] || minutes == singledigit[2] || minutes == singledigit[3] || minutes == singledigit[4] || minutes == singledigit[5] || minutes == singledigit[6] || minutes == singledigit[7] || minutes == singledigit[8]) {
+                    minutes = "0" + minutes;
+                }
+                if (seconds == singledigit[0] || seconds == singledigit[1] || seconds == singledigit[2] || seconds == singledigit[3] || seconds == singledigit[4] || seconds == singledigit[5] || seconds == singledigit[6] || seconds == singledigit[7] || seconds == singledigit[8]) {
+                    seconds = "0" + seconds;
+                }
+                if (hours == singledigit[0] || hours == singledigit[1] || hours == singledigit[2] || hours == singledigit[3] || hours == singledigit[4] || hours == singledigit[5] || hours == singledigit[6] || hours == singledigit[7] || hours == singledigit[8]) {
+                    hours = "0" + hours;
+                }
+                
+                displaytime.innerHTML = hours + ":" + minutes + ":" + seconds;
+//                alert("timechecked");
+                
+                if (checkedday == 0){                    
+                    checkday();
+                }
+                setTimeout(timecheck, 100);
             }
+            
+            function checkday(){
+                if (day == "1" || day == "4"){
+                    document.getElementById("daytype").innerHTML = "A";
+                } else if (day == "2" || day == "5"){
+                    document.getElementById("daytype").innerHTML = "B";
+                }
+                checkedday = 1;
+            }
+            
+//            alert("hours" + hours);
+//            alert("minutes" + minutes);
+//            alert("seconds" + seconds);
             
             
 		</script>
