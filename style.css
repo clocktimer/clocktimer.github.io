@@ -43,6 +43,7 @@
 
 .time{
 	position: absolute;
+    white-space: nowrap;
     color: black;
     font-size: 200px;
     top: 350px;
@@ -62,6 +63,22 @@
     position: absolute;
     display: flex;
     top: 100px;
+}
+
+.prevdaytype{
+    color: #d95959;
+    font-family: Didot;
+    font-size: 200px;
+    opacity: 1;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 3px;
+    transform: scale(1.5, 2);
+    position: absolute;
+    display: flex;
+/*    top: 300px;*/
+/*    left: 40px;*/
 }
 
 .daytypecontainer{
