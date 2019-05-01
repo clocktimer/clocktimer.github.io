@@ -8,11 +8,12 @@
 		<div class="main">
 			<div class="main">
                 <div class="daytypecontainer">
-                    <p id="daytype" class="daytype"></p>
+                    <p id="daytype" class="daytype">B</p>
+                    <p id="nextdaytype" class="nextdaytype"></p>
+                    <p id="prevdaytype" class="prevdaytype"></p>
                 </div>
 				<div class="container">
                     <div class="title">CLASS COUNTDOWN</div>
-<!--                    <div id="prevdaytype" class="prevdaytype">A</div>-->
 				</div>
                 <div id="time" class="time">00:00:00</div>
             </div>
@@ -122,7 +123,29 @@
                     document.getElementById("daytype").innerHTML = "A";
                 } else if (day == "2" || day == "5"){
                     document.getElementById("daytype").innerHTML = "B";
+                } else if (day == "3"){
+                    document.getElementById("daytype").innerHTML = "C";
                 }
+                
+                prevday = day - 1
+                nextday = day + 1
+                
+                if (prevday == "1" || prevday == "4"){
+                    document.getElementById("prevdaytype").innerHTML = "A";
+                } else if (prevday == "2" || prevday == "5"){
+                    document.getElementById("prevdaytype").innerHTML = "B";
+                } else if (prevday == "3"){
+                    document.getElementById("prevdaytype").innerHTML = "C";
+                }
+                
+                if (nextday == "1" || nextday == "4"){
+                    document.getElementById("nextdaytype").innerHTML = "A";
+                } else if (dnextay == "2" || nextday == "5"){
+                    document.getElementById("nextdaytype").innerHTML = "B";
+                } else if (nextday == "3"){
+                    document.getElementById("nextdaytype").innerHTML = "C";
+                }
+                
                 checkedday = 1;
             }
             
