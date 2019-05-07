@@ -65,6 +65,23 @@
     top: 100px;
 }
 
+.dayname{
+    color: #af3737;
+    font-family: Didot;
+    font-size: 40px;
+    opacity: 0.5;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 3px;
+    transform: scale(1.5, 2);
+    position: relative;
+    display: flex;
+    top: 900px;
+    left: 150px;
+    
+}
+
 .nextdaytype{
     color: #d95959;
     font-family: Didot;
@@ -81,6 +98,23 @@
     left: 500px;
 }
 
+.nextdayname{
+    color: #af3737;
+    font-family: Didot;
+    font-size: 40px;
+    opacity: 0.5;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 3px;
+    transform: scale(1.5, 2);
+    position: relative;
+    display: flex;
+    top: 680px;
+    left: 430px;
+    
+}
+
 .prevdaytype{
     color: #d95959;
     font-family: Didot;
@@ -94,7 +128,24 @@
     position: relative;
     display: flex;
     top: 320px;
-    left: -500px;
+    left: -490px;
+}
+
+.prevdayname{
+    color: #af3737;
+    font-family: Didot;
+    font-size: 40px;
+    opacity: 0.5;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 3px;
+    transform: scale(1.5, 2);
+    position: relative;
+    display: flex;
+    top: 680px;
+    left: -590px;
+    
 }
 
 .daytypecontainer{

@@ -8,9 +8,12 @@
 		<div class="main">
 			<div class="main">
                 <div class="daytypecontainer">
-                    <p id="daytype" class="daytype">B</p>
+                    <p id="daytype" class="daytype"></p>
+                    <p id="dayname" class="dayname"></p>
                     <p id="nextdaytype" class="nextdaytype"></p>
+                    <p id="nextdayname" class="nextdayname"></p>
                     <p id="prevdaytype" class="prevdaytype"></p>
+                    <p id="prevdayname" class="prevdayname"></p>
                 </div>
 				<div class="container">
                     <div class="title">CLASS COUNTDOWN</div>
@@ -229,6 +232,18 @@
                     document.getElementById("daytype").innerHTML = "C";
                 }
                 
+                if (day == "1"){
+                    document.getElementById("dayname").innerHTML = "Mon.";
+                } else if (day == "2"){
+                    document.getElementById("dayname").innerHTML = "Tues.";
+                } else if (day == "3"){
+                    document.getElementById("dayname").innerHTML = "Wed.";
+                } else if (day == "4"){
+                    document.getElementById("dayname").innerHTML = "Thurs.";
+                } else if (day == "5"){
+                    document.getElementById("dayname").innerHTML = "Fri.";
+                }
+                
                 prevday = day - 1
                 nextday = day + 1
                 
@@ -240,12 +255,36 @@
                     document.getElementById("prevdaytype").innerHTML = "C";
                 }
                 
+                if (prevday == "1"){
+                    document.getElementById("prevdayname").innerHTML = "Mon.";
+                } else if (prevday == "2"){
+                    document.getElementById("prevdayname").innerHTML = "Tues.";
+                } else if (prevday == "3"){
+                    document.getElementById("prevdayname").innerHTML = "Wed.";
+                } else if (prevday == "4"){
+                    document.getElementById("prevdayname").innerHTML = "Thurs.";
+                } else if (prevday == "5"){
+                    document.getElementById("prevdayname").innerHTML = "Fri.";
+                }
+                
                 if (nextday == "1" || nextday == "4"){
                     document.getElementById("nextdaytype").innerHTML = "A";
                 } else if (nextday == "2" || nextday == "5"){
                     document.getElementById("nextdaytype").innerHTML = "B";
                 } else if (nextday == "3"){
                     document.getElementById("nextdaytype").innerHTML = "C";
+                }
+                
+                if (nextday == "1"){
+                    document.getElementById("nextdayname").innerHTML = "Mon.";
+                } else if (nextday == "2"){
+                    document.getElementById("nextdayname").innerHTML = "Tues.";
+                } else if (nextday == "3"){
+                    document.getElementById("nextdayname").innerHTML = "Wed.";
+                } else if (nextday == "4"){
+                    document.getElementById("nextdayname").innerHTML = "Thurs.";
+                } else if (nextday == "5"){
+                    document.getElementById("nextdayname").innerHTML = "Fri.";
                 }
                 
                 checkedday = 1;
@@ -266,9 +305,9 @@
 				s = (s < 10) ? "0" + s : s;
                 
 //				document.getElementById("days").textContent = d;
-//				document.getElementById("days").innerText = d;
+//				document.getElementById("days").innerHTML = d;
 
-//				document.getElementById("hours").textContent = h;
+//				document.getElementById("hours").HTMLContent = h;
 //				document.getElementById("minutes").textContent = m;
 //				document.getElementById("seconds").textContent = s;
                 
