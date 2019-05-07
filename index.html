@@ -4,9 +4,9 @@
 		<title>Class Timer</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body class="body">
-		<div class="main">
-			<div class="main">
+	<body id="body" class="body">
+		<div id="main" class="main">
+			<div id="main" class="main">
                 <div class="daytypecontainer">
                     <p id="daytype" class="daytype"></p>
                     <p id="dayname" class="dayname"></p>
@@ -15,8 +15,8 @@
                     <p id="prevdaytype" class="prevdaytype"></p>
                     <p id="prevdayname" class="prevdayname"></p>
                 </div>
-				<div class="container">
-                    <div class="title">CLASS COUNTDOWN</div>
+				<div id="banner" class="container">
+                    <div id="title" class="title">CLASS COUNTDOWN</div>
 				</div>
                 <div id="time" class="time">00:00:00</div>
             </div>
@@ -30,6 +30,31 @@
             checkedday = 0;
             displaytime = document.getElementById("time");
             window.onload = timecheck();
+            i = 0;
+            
+            document.body.onkeydown = function(e) {
+                if (e.keyCode == 32){
+                    e.preventDefault();
+                    prevcolors = ["grey", "black", "#dba033"]
+                    nextcolors = ["grey", "black", "#dba033"]
+                    currcolors = ["grey", "black", "#dba033"]
+                    titlecolors = ["grey", "black", "#dba033"]
+                    timecolors = ["white", "orange", "black"]
+                    
+                    //darkercolors
+                    document.getElementById("daytype").style.color = currcolors[i];
+                    document.getElementById("dayname").style.color = currcolors[i];
+                    document.getElementById("nextdaytype").style.color = nextcolors[i];
+                    document.getElementById("nextdayname").style.color = nextcolors[i];
+                    document.getElementById("prevdaytype").style.color = prevcolors[i];
+                    document.getElementById("prevdayname").style.color = prevcolors[i];
+                    //titlecolor (same as background color)
+                    document.getElementById("title").style.color = titlecolors[i];
+                    //timecolor
+                    document.getElementById("time").style.color = timecolors[i];
+                    i += 1;
+                }
+            }
             
             function timecheck() {
                 
