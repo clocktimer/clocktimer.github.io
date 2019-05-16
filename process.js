@@ -68,7 +68,7 @@ function signup(){
         if (errorMessage != null){
             window.alert(errorMessage);
         }
-        if (errorMessage == null & errorCode == null){
+        if (errorMessage == null && errorCode == null){
             window.alert("New Account Created!");
             document.location.reload();
             // ...
