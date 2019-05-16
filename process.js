@@ -8,7 +8,6 @@ firebase.auth().onAuthStateChanged(function(user) {
       $("#loginbtn").hide();
       $("div").css("filter", "blur(0px)");
       $("#bottompart").show();
-      window.alert("user is signed in");
       
 //    document.getElementById("user_div").style.display = "block";
     document.getElementById("login").style.display = "none";
