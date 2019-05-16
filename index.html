@@ -3,11 +3,47 @@
 	<head>
 		<title>Class Timer</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="loginstyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	</head>
 	<body id="body" class="body">
+        <div id="login" class="main-div" style="background-color: white; -webkit-box-shadow: 1px 3px 18px 0px rgba(0,0,0,0.75); -moz-box-shadow: 1px 3px 18px 0px rgba(0,0,0,0.75); box-shadow: 1px 3px 18px 0px rgba(0,0,0,0.75); border-radius: 10px">
+            <h3 id="logintitle">classtimer.tk login</h3>
+            <input type="email" placeholder="Email..." id="email_field" />
+            <input type="password" placeholder="Password..." id="password_field" />
+            <button id="logintoaccountbtn" onclick="login()">Login to Account</button>
+            <br id="break0">
+            <button id="createnewaccountbtn" onclick="signup()">Create New Account</button>
+        </div>
+        <div id="classsettings" class="classes-div" style="background-color: white; -webkit-box-shadow: 1px 3px 18px 0px rgba(0,0,0,0.75); -moz-box-shadow: 1px 3px 18px 0px rgba(0,0,0,0.75); box-shadow: 1px 3px 18px 0px rgba(0,0,0,0.75); border-radius: 10px">
+            <h3 id="classsettingstitle">Select Classes</h3>
+            <h3 id="ADaytitle">A-Day</h3>
+            <input type="text" placeholder="Block 1" id="block1_A_input" />
+            <br id="break1">
+            <input type="text" placeholder="Block 2" id="block2_A_input" />
+            <br id="break1">
+            <input type="text" placeholder="Block 3" id="block3_A_input" />
+            <br id="break1">
+            <input type="text" placeholder="Block 4" id="block4_A_input" />
+            <br id="break1">
+            <h3 id="BDaytitle">B-Day</h3>
+            <input type="text" placeholder="Block 1" id="block1_B_input" />
+            <br id="break1">
+            <input type="text" placeholder="Block 2" id="block2_B_input" />
+            <br id="break1">
+            <input type="text" placeholder="Block 3" id="block3_B_input" />
+            <br id="break1">
+            <input type="text" placeholder="Block 4" id="block4_B_input" />
+            <br id="break1">
+            <button id="submitclasses" onclick="submitclasses()">Submit</button>
+        </div>
+        <div id="bottompart" class="bottompart">
+        <div class="nextclasstext">Next Class:</div>
+        <div id="nextclass" class="nextclass"></div>
+        </div>
 		<div id="main" class="main">
 			<div id="main" class="main">
-                <div class="daytypecontainer">
+                <div class="daytypecontainer">    
                     <p id="daytype" class="daytype"></p>
                     <p id="dayname" class="dayname"></p>
                     <p id="nextdaytype" class="nextdaytype"></p>
@@ -15,15 +51,41 @@
                     <p id="prevdaytype" class="prevdaytype"></p>
                     <p id="prevdayname" class="prevdayname"></p>
                 </div>
+                <img style="padding-right: 1070px; padding-top: 65px; width:50px; height: 50px; z-index: 1" src="Hamburger_icon.svg.png" onclick="dropmenu()">
+                <div class="dropmenucontainer">
+                    <div id="dropmenu" class="dropmenu">
+                        <div id="loginbtn" style="background-color: transparent; padding-left: 28%; font-size: 30px; font-weight: bold; height: 45px; margin-top: 82px; padding-top: 10px; color: white;" onclick="showlogin()">Login</div>
+                        <div id="classesbtn" style="background-color: transparent; padding-left: 20%; font-size: 30px; font-weight: bold; height: 45px; margin-top: 82px; padding-top: 10px; color: white;" onclick="showclasses()">Classes</div>
+                        <div id="logoutbtn" style="background-color: transparent; padding-left: 49px; font-size: 30px; font-weight: bold; height: 45px; margin-top: 32px; padding-top: 10px; color: white;" onclick="logout()">Logout</div>
+                        <div id="logoutbtnbox" style="position: absolute; background-color: rebeccapurple; height: 60px; width: 150px; left: 25px; top: 165px; z-index: -1; opacity: 0.9;"></div>
+                        <div style="position: absolute; background-color: rebeccapurple; height: 60px; width: 150px; left: 25px; top: 78px; z-index: -1; opacity: 0.9;"></div>
+                    </div>
+<!--
+                    <div id="dropmenu2" class="dropmenu2">
+                        <p>Name:</p>
+                        <p>Schedule:</p>
+                    </div>
+-->
+                </div>
 				<div id="banner" class="container">
                     <div id="title" class="title">CLASS COUNTDOWN</div>
 				</div>
                 <div id="time" class="time">00:00:00</div>
             </div>
 		</div>
-
-
+        
+<!--
+        TODO: SET UP SYSTEM TO ALLLOW PERSONALIZED SCHEDULES
+DOC - "Classes" or smthn; Collection: "xuser" (name of whichever user) (each user has a personal collection I guess); Data: Name = Block Number, Value = Class;
+-->
 		<script type="text/javascript">	
+        
+            $(document).ready(function(){
+                $("#login").hide();
+                $("#logoutbtn").hide();
+                $("#logoutbtnbox").hide();
+                $("#classsettings").hide();
+            });
             
             var date = new Date();
             day = date.getDay();
@@ -31,6 +93,12 @@
             displaytime = document.getElementById("time");
             window.onload = timecheck();
             i = 0;
+            
+//            document.body.onkeyup = function(g) {
+//                if (g.keyCode == 38){
+//                    window.location.href = "/login.html"
+//                }
+//            }
             
             document.body.onkeydown = function(e) {
                 if (e.keyCode == 32){
@@ -76,6 +144,7 @@
                 if (day != "3"){
                     if (remTime <= 0){
                         //first block
+                        block = "1";
 //                        alert("school has started");
                         var eventDate = new Date(currentyear, currentmonth, currentday, 9, 25);
                         var eventTime = eventDate.getTime();
@@ -90,6 +159,7 @@
                             calctime(remTime);
                             if (remTime <= 0){
                                 //second block
+                                block = "2";
 //                                alert("second block");
 //                                document.getElementById("block").innerHTML = "secondblock";
                                 var eventDate = new Date(currentyear, currentmonth, currentday, 11, 10);
@@ -105,6 +175,7 @@
                                     calctime(remTime);
                                     if (remTime <= 0){
                                         //third block
+                                        block = "3";
 //                                        alert("third block");
                                         var eventDate = new Date(currentyear, currentmonth, currentday, 13, 30);
                                         var eventTime = eventDate.getTime();
@@ -119,6 +190,7 @@
                                             calctime(remTime);
                                             if (remTime <= 0){
                                                 //fourth block
+                                                block = "4";
 //                                                alert("fourth block");
                                                 var eventDate = new Date(currentyear, currentmonth, currentday, 15, 15);
                                                 var eventTime = eventDate.getTime();
@@ -248,6 +320,7 @@
                 setTimeout(timecheck, 100);
             }
             
+            
             function checkday(){
                 if (day == "1" || day == "4"){
                     document.getElementById("daytype").innerHTML = "A";
@@ -259,14 +332,19 @@
                 
                 if (day == "1"){
                     document.getElementById("dayname").innerHTML = "Mon.";
+                    document.getElementById("dayname").classList.add("daynameMon");
                 } else if (day == "2"){
                     document.getElementById("dayname").innerHTML = "Tues.";
+                    document.getElementById("dayname").classList.add("daynameTues");
                 } else if (day == "3"){
                     document.getElementById("dayname").innerHTML = "Wed.";
+                    document.getElementById("dayname").classList.add("daynameWed");
                 } else if (day == "4"){
                     document.getElementById("dayname").innerHTML = "Thurs.";
+                    document.getElementById("dayname").classList.add("daynameThurs");
                 } else if (day == "5"){
                     document.getElementById("dayname").innerHTML = "Fri.";
+                    document.getElementById("dayname").classList.add("daynameFri");
                 }
                 
                 prevday = day - 1
@@ -282,14 +360,19 @@
                 
                 if (prevday == "1"){
                     document.getElementById("prevdayname").innerHTML = "Mon.";
+                    document.getElementById("prevdayname").classList.add("prevdaynameMon");
                 } else if (prevday == "2"){
                     document.getElementById("prevdayname").innerHTML = "Tues.";
+                    document.getElementById("prevdayname").classList.add("prevdaynameTues");
                 } else if (prevday == "3"){
                     document.getElementById("prevdayname").innerHTML = "Wed.";
+                    document.getElementById("prevdayname").classList.add("prevdaynameWed");
                 } else if (prevday == "4"){
                     document.getElementById("prevdayname").innerHTML = "Thurs.";
+                    document.getElementById("prevdayname").classList.add("prevdaynameThurs");
                 } else if (prevday == "5"){
                     document.getElementById("prevdayname").innerHTML = "Fri.";
+                    document.getElementById("prevdayname").classList.add("prevdaynameFri");
                 }
                 
                 if (nextday == "1" || nextday == "4"){
@@ -302,14 +385,19 @@
                 
                 if (nextday == "1"){
                     document.getElementById("nextdayname").innerHTML = "Mon.";
+                    document.getElementById("nextdayname").classList.add("nextdaynameMon");
                 } else if (nextday == "2"){
                     document.getElementById("nextdayname").innerHTML = "Tues.";
+                    document.getElementById("nextdayname").classList.add("nextdaynameTues");
                 } else if (nextday == "3"){
                     document.getElementById("nextdayname").innerHTML = "Wed.";
+                    document.getElementById("nextdayname").classList.add("nextdaynameWed");
                 } else if (nextday == "4"){
                     document.getElementById("nextdayname").innerHTML = "Thurs.";
+                    document.getElementById("nextdayname").classList.add("nextdaynameThurs");
                 } else if (nextday == "5"){
                     document.getElementById("nextdayname").innerHTML = "Fri.";
+                    document.getElementById("nextdayname").classList.add("nextdaynameFri");
                 }
                 
                 checkedday = 1;
@@ -339,8 +427,106 @@
                 document.getElementById("time").innerHTML = h + " : " + m + " : " + s;
             }
             
+            i = 1;
+            function dropmenu(){
+                if (i % 2 == 0){
+                    document.getElementById("dropmenu").style.opacity = 0;
+                } else {
+                    document.getElementById("dropmenu").style.opacity = 1;
+                }
+                i += 1;
+            }
+            
+            function showlogin(){
+                $("#login").show(1000);
+                dropmenu();
+                $("div").css("filter", "blur(5px)")
+                $("#login").css("filter", "blur(0px)");
+                
+                document.addEventListener('click', function(a) {
+                    a = a || window.event;
+                    var target = a.target || e.srcElement,
+                    text = target.textContent || target.innerText; 
+                    if (target.id == "login" || target.id == "logintitle" || target.id == "email_field" || target.id == "password_field" || target.id == "logintoaccountbtn" || target.id == "break0" || target.id == "createnewaccountbtn"){
+                    } else if (target.id == "loginbtn"){
+                    } else {
+                        $("div").css("filter", "blur(0px)");
+                        $("#login").hide(1000);
+                    }
+                }, false);
+            }
+            
+            function showclasses(){
+                $("#classsettings").show(1000);
+                dropmenu();
+                $("div").css("filter", "blur(5px)")
+                $("#classsettings").css("filter", "blur(0px)");
+                document.addEventListener('click2', function(b) {
+                    b = b || window.event;
+                    var target = b.target || b.srcElement,
+                    text = target.textContent || target.innerText; 
+                    if (target.id == "classsettings" || target.id == "classsettingstitle" || target.id == "block1_A_input" || target.id == "block2_A_input" || target.id == "block3_A_input" || target.id == "block4_A_input" || target.id == "break1" || target.id == "submitclasses" || target.id == "ADaytitle" || target.id == "BDaytitle" || target.id == "block1_B_input" || target.id == "block2_B_input" || target.id == "block3_B_input" || target.id == "block4_B_input"){
+                    } else if (target.id == "classbtn"){
+                    } else {
+                        $("div").css("filter", "blur(0px)");
+                        $("#classsettings").hide(1000);
+                        window.alert(target.id);
+                    }
+                }, false);
+            }
+            
+            function submitclasses(){
+                var block1Ainput = document.getElementById("block1_A_input").value;
+                var block2Ainput = document.getElementById("block2_A_input").value;
+                var block3Ainput = document.getElementById("block3_A_input").value;
+                var block4Ainput = document.getElementById("block4_A_input").value;
+                var block1Binput = document.getElementById("block1_B_input").value;
+                var block2Binput = document.getElementById("block2_B_input").value;
+                var block3Binput = document.getElementById("block3_B_input").value;
+                var block4Binput = document.getElementById("block4_B_input").value;
+                writeUserData(block1Ainput, block2Ainput, block3Ainput, block4Ainput, block1Binput, block2Binput, block3Binput, block4Binput)
+//                window.alert("hey");
+//                window.alert(user.email);
+//                writeUserData(user.email);
+                
+//                writeUserData(user, block1A, block2A, block3A, block4A, block1B, block2B, block3B, block4B);
+            }
+            
             timecheck();
             
 		</script>
-		</body>
+        
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+        
+  <script>
+    // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDtrwz7Yo6qWe_ML4R9YhZsqmIWgcqvcu4",
+                authDomain: "classtimer-58ed2.firebaseapp.com",
+                databaseURL: "https://classtimer-58ed2.firebaseio.com",
+                projectId: "classtimer-58ed2",
+                storageBucket: "classtimer-58ed2.appspot.com",
+                messagingSenderId: "510341420446",
+                appId: "1:510341420446:web:dd7837d8cffb6cb4"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+        
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<!--        <script src="/__/firebase/5.11.1/firebase-app.js"></script>-->
+        
+        <!-- Add Firebase products that you want to use -->
+<!--        <script src="/__/firebase/5.11.1/firebase-auth.js"></script>-->
+<!--        <script src="/__/firebase/5.11.1/firebase-firestore.js"></script>-->
+  <script src="process.js"></script>
+  <script src="datamanagment.js"></script>
+  <script src="getclasses.js"></script>
+        
+    </body>
 </html>
