@@ -214,8 +214,8 @@
 .nextclass{
     position: absolute;
     top: 28px;
-    left: 220px;
-    color: black;
+    left: 710px;
+    color: #ffa9a9;
     font-family: Didot;
     font-size: 40px;
     opacity: 1;
@@ -228,8 +228,8 @@
 .nextclasstext{
     position: absolute;
     top: 30px;
-    left: 18px;
-    color: black;
+    left: 510px;
+    color: #ffa9a9;
     font-family: Didot;
     font-size: 38px;
 }
@@ -280,10 +280,10 @@
 }
 
 .bottompart{
-    position: fixed;
+    position: absolute;
     background-color: white;
-    width: 460px;
+    width: 1450px;
     height: 100px;
-    top: 60%;
+    top: 710px;
     margin-top: 198px;
 }
