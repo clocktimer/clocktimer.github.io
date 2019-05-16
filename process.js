@@ -62,9 +62,17 @@ function signup(){
         var errorCode = error.code;
         var errorMessage = error.message;
 //        window.alert("New Account Created!\n" + "Email: " + NewUserEmail + "\nPassword: " + NewUserPassword)
-        window.alert("New Account Created!")
-        document.location.reload();
-        // ...
+        if (errorCode != null){
+            window.alert(errorCode);
+        }
+        if (errorMessage != null){
+            window.alert(errorMessage);
+        }
+        if (errorMessage == null & errorCode == null){
+            window.alert("New Account Created!");
+            document.location.reload();
+            // ...
+        }
     });
 }
 
