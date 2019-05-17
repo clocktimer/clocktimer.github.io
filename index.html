@@ -51,7 +51,7 @@
                     <p id="prevdaytype" class="prevdaytype"></p>
                     <p id="prevdayname" class="prevdayname"></p>
                 </div>
-                <img style="padding-right: 1070px; padding-top: 65px; width:50px; height: 50px; z-index: 1" src="Hamburger_icon.svg.png" onclick="dropmenu()">
+                <img style="margin-right: 1070px; margin-top: 65px; width:50px; height: 50px; z-index: 1" src="Hamburger_icon.svg.png" onclick="dropmenu()">
                 <div class="dropmenucontainer">
                     <div id="dropmenu" class="dropmenu">
                         <div id="loginbtn" style="background-color: transparent; padding-left: 28%; font-size: 30px; font-weight: bold; height: 45px; margin-top: 82px; padding-top: 10px; color: white;" onclick="showlogin()">Login</div>
@@ -452,6 +452,7 @@ DOC - "Classes" or smthn; Collection: "xuser" (name of whichever user) (each use
                     } else {
                         $("div").css("filter", "blur(0px)");
                         $("#login").hide(1000);
+                        document.removeEventListener('click');
                     }
                 }, false);
             }
@@ -461,16 +462,17 @@ DOC - "Classes" or smthn; Collection: "xuser" (name of whichever user) (each use
                 dropmenu();
                 $("div").css("filter", "blur(5px)")
                 $("#classsettings").css("filter", "blur(0px)");
-                document.addEventListener('click2', function(b) {
-                    b = b || window.event;
-                    var target = b.target || b.srcElement,
+                
+                document.addEventListener('click', function(a) {
+                    a = a || window.event;
+                    var target = a.target || a.srcElement,
                     text = target.textContent || target.innerText; 
                     if (target.id == "classsettings" || target.id == "classsettingstitle" || target.id == "block1_A_input" || target.id == "block2_A_input" || target.id == "block3_A_input" || target.id == "block4_A_input" || target.id == "break1" || target.id == "submitclasses" || target.id == "ADaytitle" || target.id == "BDaytitle" || target.id == "block1_B_input" || target.id == "block2_B_input" || target.id == "block3_B_input" || target.id == "block4_B_input"){
-                    } else if (target.id == "classbtn"){
+                    } else if (target.id == "classesbtn"){
                     } else {
                         $("div").css("filter", "blur(0px)");
                         $("#classsettings").hide(1000);
-                        window.alert(target.id);
+//                        window.alert(target.id);
                     }
                 }, false);
             }
