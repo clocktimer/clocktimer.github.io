@@ -285,4 +285,5 @@
     height: 100px;
     top: 710px;
     margin-top: 198px;
+    z-index: -1;
 }
