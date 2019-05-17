@@ -175,7 +175,7 @@
 .prevdaynameWed{
     margin-left: 20px;;
 }
-.prevdaynameThurs{}
+.prevdaynameThurs{padding-right: 50px;;}
 .prevdaynameFri{}
 
 .daytypecontainer{

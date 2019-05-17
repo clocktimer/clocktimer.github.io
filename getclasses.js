@@ -14,6 +14,7 @@ function getclasses() {
     var eventTime = eventDate.getTime();
     var remTime = eventTime - currentTime;
     calctime(remTime);
+    block = "0"
     
     if (day != "3"){
         if (remTime <= 0){
@@ -190,7 +191,16 @@ function getclasses() {
     if (checkedday == 0){                    
         checkday();
     }
+    
+    
     if (day == "1" || day == "4"){ 
+        
+        if (block == "0"){
+            var nextblock = firebase.database().ref('Classes/' + user.uid + '/block1A');
+            nextblock.on('value', function(snapshot) {
+                document.getElementById("nextclass").innerHTML = snapshot.val()
+            });
+        }
         
         if (block == "1"){
             var nextblock = firebase.database().ref('Classes/' + user.uid + '/block2A');
@@ -218,6 +228,13 @@ function getclasses() {
         }
     }
     if (day == "2" || day == "5"){
+        
+        if (block == "0"){
+            var nextblock = firebase.database().ref('Classes/' + user.uid + '/block1B');
+            nextblock.on('value', function(snapshot) {
+                document.getElementById("nextclass").innerHTML = snapshot.val()
+            });
+        }
         
         if (block == "1"){
             var nextblock = firebase.database().ref('Classes/' + user.uid + '/block2B');
