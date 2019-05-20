@@ -83,7 +83,9 @@
     
 }
 
-.daynameMon{}
+.daynameMon{
+    left: 50px;
+}
 .daynameTues{}
 .daynameWed{
     left: 200px;
@@ -126,7 +128,9 @@
     left: 430px;    
 }
 .nextdaynameMon{}
-.nextdaynameTues{}
+.nextdaynameTues{
+    left: 410px;
+}
 .nextdaynameWed{}
 .nextdaynameThurs{
     left: 405px;
